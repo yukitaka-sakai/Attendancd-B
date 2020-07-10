@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
        # ログイン後にユーザー情報ページにリダイレクトします。
     else
       # ここにはエラーメッセージ用のflashを入れます
+      flash[:danger] = "認証に失敗しました。"
       render :new
     end
   end
