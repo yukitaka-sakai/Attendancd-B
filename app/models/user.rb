@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  #remember_tokenという仮想の属性を作成する。
+  attr_accessor :remember_token
   before_save { self.email = email.downcase }
   
   validates :name,  presence: true, length: { maximum:  50 }
@@ -23,5 +25,11 @@ class User < ApplicationRecord
   #ランダムなトークンを返す
   def User.new_token
     ScureRandom.urlsafe_base64
+  end
+  
+  #永続セッションのためハッシュかしたトークンをデータベースに記憶する。
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 end
