@@ -13,6 +13,7 @@ gem 'jbuilder',     '~> 2.5'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'sqlite3'
