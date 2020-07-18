@@ -22,7 +22,9 @@
       <td>締め　<%= l(@last_day, format: :short) %></td>      
     </tr>    
   </table>
- </div>
+</div>
+ 
+<%= link_to "勤怠編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-success" %>
  
 <div>
   <table class="table table-bordered table-condensed table-hover" id="table-attendances">
