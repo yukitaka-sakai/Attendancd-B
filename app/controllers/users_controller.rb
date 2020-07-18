@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def show
     # @first_day = Date.current.beginning_of_month
     # @last_day = @first_day.end_of_month
+    # 出社日数は、１ヶ月の勤怠データの中で（出勤データがない）状態では（ない）もの.をカウント
+    @worked_sum = @attendances.where.not(started_at: nil).count
   end
   
   def new
