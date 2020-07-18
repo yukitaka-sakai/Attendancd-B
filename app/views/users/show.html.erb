@@ -10,7 +10,7 @@
       </td>
       <td>指定勤務時間 <%= format_basic_info(@user.work_time) %></td>
       <td colspan="3"><%= format_basic_info(@user.basic_time) %> 基本時間</td>
-      <td>初日</td>
+      <td>初日　<%= l(@first_day, format: :short) %></td>
     </tr>
     
     <tr>
@@ -19,7 +19,7 @@
       <td>コード</td>
       <td></td>
       <td>出勤日数</td>
-      <td>締め</td>      
+      <td>締め　<%= l(@last_day, format: :short) %></td>      
     </tr>    
   </table>
  </div>
@@ -48,13 +48,19 @@
     </thead>
     
     <tbody>
-      <% (@first_day..@last_day).each do |day| %>
+      <% @attendances.each do |day| %>
         <tr>
-          <td><%= l(day, format: :short) %></td>
-          <td><%= $days_of_the_week[day.wday] %></td>
+          <td><%= l(day.worked_on, format: :short) %></td>
+          <td><%= $days_of_the_week[day.worked_on.wday] %></td>
           <td></td>
           <td></td>
-          <td></td>
+          <td>
+            <!--もし(今日と、日付けが同じ）かつ、日にちの出勤時間がnilであるか？-->
+            <% if (Date.current == day.worked_on) && day.started_at.nil? %>
+            <!--"出社"ボタンでユーザーの勤怠情報更新を飛ばし-->
+              <%= link_to "出社", user_attendance_path(@user, day), method: :patch, class: "btn btn-primary btn-attendance" %>
+            <% end %>
+            </td>
           <td></td>
           <td></td>
           <td></td>
