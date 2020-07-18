@@ -10,5 +10,9 @@ module AttendancesHelper
     # 勤怠データが当日ではない、または、当日だが出社時間も退社時間も登録済みの場合”false”
     false
   end
+  
+  def working_times(start, finish)
+    format("%.2f", (((finish - start) / 60) / 60.0))
+  end
 end
 
