@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+/* ユーザー情報下のボタン*/ 
+.btn-users-show {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
 /* ユーザー勤怠情報テーブル */
 
 #table-attendances {
@@ -60,6 +66,10 @@
   td {
     vertical-align: middle;
   }  
+}
+
+.form-control {
+  height: 40px;
 }
 
 /* 基本情報編集モーダルウインドウ */
