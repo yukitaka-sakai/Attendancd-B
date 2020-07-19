@@ -16,6 +16,9 @@
     vertical-align: middle;
     text-align: center;
   }
+  tbody tr:nth-child(even) {
+    background-color: #eee;
+  }
 }
 
 .btn-flat-border {
