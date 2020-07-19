@@ -17,23 +17,25 @@
       </thead>
       <tbody>
         <% @attendances.each do |day| %>
-          <tr>
-            <td><%= l(day.worked_on, format: :short) %></td>
-            <td><%= $days_of_the_week[day.worked_on.wday] %></td>
-            <td><%= l(day.started_at, format: :time) if day.started_at.present? %></td>
-            <td><%= l(day.finished_at, format: :time) if day.finished_at.present? %></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <%= f.fields_for "attendances[]",day do |attendance| %>
+            <tr>
+              <td><%= l(day.worked_on, format: :short) %></td>
+              <td><%= $days_of_the_week[day.worked_on.wday] %></td>
+              <td><%= attendance.time_field :started_at, class: "form-control" %></td>
+              <td><%= attendance.time_field :finished_at, class: "form-control" %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
   
   <div class="center">
-    <%= f.submit "まとめて更新", class: "btn btn-md btn-primary" %>
     <%= link_to "キャンセル", user_path(date: @first_day), class: "btn btn-md btn-default" %>
+    <%= f.submit "編集を保存する", class: "btn btn-md btn-primary" %>
   </div>
 <% end %>
