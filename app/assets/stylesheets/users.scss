@@ -23,7 +23,7 @@
     text-align: center;
   }
   tbody tr:nth-child(even) {
-    background-color: #eee;
+    background-color: #efe;
   }
 }
 
@@ -81,4 +81,11 @@
 .btn-basic-info {
   margin: 15px 0;
   width: 30%;
+}
+
+/* 検索フォーム*/ 
+
+.search-form {
+height:33px;
+text-align: center;
 }

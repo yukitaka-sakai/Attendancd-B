@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   
   def index
     # :pageがキー
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).search(params[:search])
   end
 
   def show
