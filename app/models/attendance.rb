@@ -8,7 +8,7 @@ class Attendance < ApplicationRecord
   validate :finished_at_is_invalid_without_a_started_at
   # 出社・退社時間がどちらも存在する時、出社時間より早い退社時間は無効
   validate :started_at_than_finished_at_fast_if_invalid
-  # validate :only_started_at_is_invalid
+  validate :only_started_at_is_invalid
   
   
   def finished_at_is_invalid_without_a_started_at
