@@ -35,6 +35,7 @@ class AttendancesController < ApplicationController
         attendance = Attendance.find(id)
         attendance.update_attributes!(item)
       end
+      
     end
     flash[:success] = "１ヶ月分の勤怠情報を更新しました。"
     redirect_to user_url(date: params[:date])

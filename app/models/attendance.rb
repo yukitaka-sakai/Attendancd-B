@@ -24,12 +24,14 @@ class Attendance < ApplicationRecord
   end
   
   def only_started_at_is_invalid
-    errors.add(:started_at,"のみの編集は無効です") if started_at.present? && finished_at.blank?
+    if Date.current.day != worked_on.day
+      errors.add(:started_at,"のみの編集は無効です") if started_at.present? && finished_at.blank?
+    end
   end
   
   def time_current_than_work_on_is_invalid
     if started_at.present? && finished_at.present?
-      errors.add(:started_at,"miraiみの編集は無効です") if started_at.day < worked_on.day
+      errors.add("当日以降の編集は無効です") if started_at.day < worked_on.day
     end
   end
 end
