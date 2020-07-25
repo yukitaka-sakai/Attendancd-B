@@ -15,10 +15,12 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'rails-i18n'
 gem 'rounding'
+gem 'rb-readline'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
 end
 
 group :development do
