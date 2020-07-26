@@ -27,6 +27,17 @@
   }
 }
 
+#table-list {
+  th {
+    vertical-align: middle;
+    text-align: center;
+  }
+  td {
+    vertical-align: middle;
+    text-align: center;
+  }
+}  
+
 .btn-flat-border {
   display: inline-block;
   padding: 0.3em 1em;
@@ -68,9 +79,6 @@
   }  
 }
 
-// .form-control {
-//   height: 40px;
-// }
 
 /* 基本情報編集モーダルウインドウ */
 
